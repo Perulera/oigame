@@ -1,5 +1,7 @@
 class PagesController < ApplicationController
 
+  layout :set_layout
+
   def index
     @campaigns = Campaign.last_campaigns_without_pagination(3)
     @users = User.count

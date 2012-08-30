@@ -22,3 +22,4 @@
 //= require jqplot/plugins/jqplot.highlighter
 // require date
 // require date_es
+//= modernizr-2.5.3-respond-1.1.0.min

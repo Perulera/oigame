@@ -12,4 +12,13 @@ class ApplicationController < ActionController::Base
   def set_http_cache(period, visibility = false)
     expires_in period, :public => visibility, 'max-stale' => 0
   end
+
+  # Muestra el layout nuevo o el antiguo según params[:v]
+  def set_layout
+    if params[:v] == 'old'
+      'application'
+    else
+      'newdesign'
+    end
+  end
 end
