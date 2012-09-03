@@ -60,45 +60,45 @@
 </div><!-- subscribe-wrapper -->
 <div id="home-info-wrapper">
   &nbsp;
-  <% if @campaigns.count >= 3 %>
-    <div id="campaigns-info">
-      <div id="last-campaigns-ribbon">últimas campañas</div>
-      <% @campaigns.each do |campaign| %>
-        <div class="campaign-home-detail">
-          <div class="c-image-and-title">
-            <div class="ctitle"><h2><%= link_to truncate(campaign.name, :length => 37), campaign %></h2></div>
-            <% if campaign.image.to_s %>
-              <%= link_to image_tag(campaign.image_url(:home)), campaign %>
-            <% end %>
-          </div>
-          <div class="c-text-and-link">
-            <%= campaign.to_html(truncate(campaign.intro, :length => 225)).html_safe %>
-            <% if campaign.ttype == 'mailing' %>
-              <p><strong><%= link_to '> Únete a esta campaña', campaign %></strong><br /><%= campaign.messages.validated.count %> personas ya lo han hecho</p>
-            <% elsif campaign.ttype == 'petition' %>
-              <p><strong><%= link_to '> Únete a esta campaña', campaign %></strong><br /><%= campaign.petitions.validated.count %> personas ya lo han hecho</p>
-            <% end %>
-          </div>
-        </div><!-- campaign-home-detail -->
-      <% end %>
-      <div class="clear"></div>
-    </div><!-- campaigns-info -->
-  <% end %>
   <div id="home-info">
     <div id="sayit">
-      <h2>Dilo</h2>
+      <h2>Campañas Calientes</h2>
       <p>Que se escuche tu voz. <strong>oiga.me</strong> es una plataforma en la que puedes montar campañas online en las que el mundo entero puede participar.</p>
       <p><strong><%= link_to '> Aprende a usar oiga.me', tutorial_path %></strong></p>
       <%= link_to image_tag('sayit.jpg'), tutorial_path %>
     </div>
     <div id="repeat">
-      <h2>Repítelo</h2>
+      <h2>Afinidad</h2>
       <p>Súmate a la protesta, úne tu voz a las otras. Participa enviando millones de correos de forma efectiva, sin que te filtren, sin que puedan taparse los oídos.</p>
       <p><strong><%= link_to '> Últimas campañas', campaigns_path %></strong></p>
       <%= link_to image_tag('repeat.jpg'), campaigns_path %>
     </div>
     <div id="doit">
-      <h2>Hazlo posible</h2>
+      <h2>Destacada</h2>
+      <p>Haz posible que en <strong>oiga.me</strong> podamos hacer campañas de miles de llamadas de teléfono a los poderosos, que podamos enviar cientos de faxes. Mejora, dona, difunde, escribe código.</p>
+      <p><strong><%= link_to '> Infórmate como donar', donate_path %></strong></p>
+      <%= link_to image_tag('doit.jpg'), donate_path %>
+    </div>
+  </div><!-- home-info -->
+</div><!-- home-info-wrapper -->
+
+<div id="home-info-wrapper">
+  &nbsp;
+  <div id="home-info">
+    <div id="sayit">
+      <h2>Activista</h2>
+      <p>Que se escuche tu voz. <strong>oiga.me</strong> es una plataforma en la que puedes montar campañas online en las que el mundo entero puede participar.</p>
+      <p><strong><%= link_to '> Aprende a usar oiga.me', tutorial_path %></strong></p>
+      <%= link_to image_tag('sayit.jpg'), tutorial_path %>
+    </div>
+    <div id="repeat">
+      <h2>¿Qué está pasando?</h2>
+      <p>Súmate a la protesta, úne tu voz a las otras. Participa enviando millones de correos de forma efectiva, sin que te filtren, sin que puedan taparse los oídos.</p>
+      <p><strong><%= link_to '> Últimas campañas', campaigns_path %></strong></p>
+      <%= link_to image_tag('repeat.jpg'), campaigns_path %>
+    </div>
+    <div id="doit">
+      <h2>Geolocalización</h2>
       <p>Haz posible que en <strong>oiga.me</strong> podamos hacer campañas de miles de llamadas de teléfono a los poderosos, que podamos enviar cientos de faxes. Mejora, dona, difunde, escribe código.</p>
       <p><strong><%= link_to '> Infórmate como donar', donate_path %></strong></p>
       <%= link_to image_tag('doit.jpg'), donate_path %>

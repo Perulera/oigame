@@ -15,11 +15,12 @@ class ApplicationController < ActionController::Base
 
   # Muestra el layout nuevo o el antiguo según params[:v]
   def set_layout
-    if params[:v] == 'old'
-      'application'
-    else
-      'newdesign'
-    end
+    #if params[:v] == 'old'
+    #  'application'
+    #else
+    #  'newdesign'
+    #end
+    'application'
   end
     
   def generate_token
