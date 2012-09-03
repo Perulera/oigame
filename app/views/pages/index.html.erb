@@ -1,13 +1,14 @@
 <% @page_title = t(:home) %>
 
 <div id="subscribe-wrapper">
+
   <div id="subscribe">
     <div id="subscribe-img">
       <%= image_tag("home-subscribe-3.jpg", :width => 462, :height => 359) %>
     </div>
     <div id="subscribe-form">
-      <p class="msg">NO ODIES AL<br />
-      LOBBY, ¡CÓMETELO!</p>
+      <p class="msg">Don't predict the future<br />
+      Achieve It!!</p>
       <p class="user-count"><%= @users %> PERSONAS</p>
       <p class="do-it">YA LO HAN HECHO</p>
       <% if user_signed_in? %>
@@ -24,6 +25,7 @@
         </form>
       <% end %>
     </div>
+
   </div>
   <div id="simple-slideshow-wrapper">
     <div id="simpleSlide-slideshow">
@@ -58,20 +60,23 @@
     <div class="auto-slider" rel="1"></div>
   </div><!-- simple-slideshow-wrapper -->
 </div><!-- subscribe-wrapper -->
+<div id="shadow"><%= link_to image_tag('shadow1.png'), "#" %></div>
 <div id="home-info-wrapper">
   &nbsp;
   <div id="home-info">
     <div id="sayit">
-      <h2>Campañas Calientes</h2>
+      <h2>Campañas Calientes <%= link_to image_tag('hotmini.png'), campaigns_path %> </h2>
       <p>Que se escuche tu voz. <strong>oiga.me</strong> es una plataforma en la que puedes montar campañas online en las que el mundo entero puede participar.</p>
       <p><strong><%= link_to '> Aprende a usar oiga.me', tutorial_path %></strong></p>
-      <%= link_to image_tag('sayit.jpg'), tutorial_path %>
+      <%= link_to image_tag('hot2.png'), tutorial_path %>
     </div>
     <div id="repeat">
-      <h2>Afinidad</h2>
+       
+      <h2>Afinidad <%= link_to image_tag('comunity2.png'), campaigns_path %></h2>
       <p>Súmate a la protesta, úne tu voz a las otras. Participa enviando millones de correos de forma efectiva, sin que te filtren, sin que puedan taparse los oídos.</p>
       <p><strong><%= link_to '> Últimas campañas', campaigns_path %></strong></p>
-      <%= link_to image_tag('repeat.jpg'), campaigns_path %>
+      <%= link_to image_tag('comunity.png'), campaigns_path %>
+    
     </div>
     <div id="doit">
       <h2>Destacada</h2>
@@ -85,23 +90,24 @@
 <div id="home-info-wrapper">
   &nbsp;
   <div id="home-info">
-    <div id="sayit">
-      <h2>Activista</h2>
-      <p>Que se escuche tu voz. <strong>oiga.me</strong> es una plataforma en la que puedes montar campañas online en las que el mundo entero puede participar.</p>
-      <p><strong><%= link_to '> Aprende a usar oiga.me', tutorial_path %></strong></p>
-      <%= link_to image_tag('sayit.jpg'), tutorial_path %>
-    </div>
+  
     <div id="repeat">
       <h2>¿Qué está pasando?</h2>
       <p>Súmate a la protesta, úne tu voz a las otras. Participa enviando millones de correos de forma efectiva, sin que te filtren, sin que puedan taparse los oídos.</p>
       <p><strong><%= link_to '> Últimas campañas', campaigns_path %></strong></p>
-      <%= link_to image_tag('repeat.jpg'), campaigns_path %>
+      <%= link_to image_tag('quepasa.png'), campaigns_path %>
     </div>
     <div id="doit">
-      <h2>Geolocalización</h2>
-      <p>Haz posible que en <strong>oiga.me</strong> podamos hacer campañas de miles de llamadas de teléfono a los poderosos, que podamos enviar cientos de faxes. Mejora, dona, difunde, escribe código.</p>
+      <h2>Donde </h2>
+      <p>Geolocalización <strong>oiga.me</strong> podamos hacer campañas de miles de llamadas de teléfono a los poderosos, que podamos enviar cientos de faxes. Mejora, dona, difunde, escribe código.</p>
       <p><strong><%= link_to '> Infórmate como donar', donate_path %></strong></p>
-      <%= link_to image_tag('doit.jpg'), donate_path %>
+      <%= link_to image_tag('world.jpg'), donate_path %>
+    </div>
+      <div id="sayit">
+      <h2>Quién</h2>
+      <p>Activista. <strong>oiga.me</strong> es una plataforma en la que puedes montar campañas online en las que el mundo entero puede participar.</p>
+      <p><strong><%= link_to '> Aprende a usar oiga.me', tutorial_path %></strong></p>
+      <%= link_to image_tag('sayit.jpg'), tutorial_path %>
     </div>
   </div><!-- home-info -->
 </div><!-- home-info-wrapper -->

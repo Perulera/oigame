@@ -10,6 +10,7 @@
 @import "jquery.ui.all"
 @import "multi-select"
 @import "glyphicons"
+@import url(http://fonts.googleapis.com/css?family=Handlee)
 //import "translate"
 
 
@@ -19,6 +20,7 @@ $border-shadow: #b1b1b1
 
 html
   background-color: #000
+  font-family: 'Handlee', cursive
 
 .label
   a, a:hover
@@ -88,6 +90,7 @@ div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer
   #container 
     width: 960px
     margin: auto
+    
 
   #corner
     background-color: #AA0000
@@ -179,19 +182,24 @@ div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer
       color: #fff
 
 #subscribe-wrapper
-  background-color: #222
-  background: image-url("subscribe-wrapper-bg.gif") repeat scroll left top black
+  background-color: #f0f0f0
+  background: image-url("retro_intro.png") repeat scroll left top black
   height: 428px
   padding: 15px 10px 10px 10px
+  border: 2px dotted #f0f0f0
+  font-family: 'Handlee', cursive
 
   #subscribe
     @extend .container_24
+
 
     #subscribe-img, #subscribe-form
       @extend .grid_12
 
     #subscribe-img
       @extend .alpha
+      
+
 
     #subscribe-form
       @extend .omega
@@ -219,9 +227,14 @@ div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer
           padding: 9px 14px
 
 #home-info-wrapper
+  background: url(/assets/subtle_dots.png) repeat scroll left top black
   background-color: #222
-  border-bottom: 1px solid $border-main-color
+  border-bottom: 1px solid #D2D2D2
   padding-bottom: 20px
+  position: relative
+  z-index: 3
+ 
+  font-family: 'Handlee', cursive
 
   #campaigns-info
     @extend .container_24
@@ -284,6 +297,14 @@ div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer
       @extend .grid_8
       p
         font-size: 1.1em
+      h2
+        background: url(/assets/light_noise_diagonal.png) repeat scroll left top black
+        -moz-box-shadow: 0 0 5px #888
+        -webkit-box-shadow: 0 0 5px #888
+        box-shadow: 0 0 5px #888
+        text-align: center
+
+        
 
     #sayit
       @extend .alpha
@@ -889,3 +910,17 @@ div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer
   margin-right: auto  
   display: block
   text-align: center
+
+#altavoz
+  background: url(/assets/altavoz.png) no-repeat
+  position: relative
+  z-index: 19
+
+#shadow
+  background: url(/assets/altavoz.png) no-repeat
+  position: relative
+  z-index: 4
+  background-position: -180px -165px
+  height: 150px
+
+
