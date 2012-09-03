@@ -18,4 +18,13 @@ FactoryGirl.define do
     password              "normal"
     password_confirmation "normal"
   end
+
+  factory :admin do 
+    name                  "Admin User"
+    email                 "admin@example.com"
+    password              "admin"
+    password_confirmation "admin"
+    role                  "admin"
+  end
+
 end

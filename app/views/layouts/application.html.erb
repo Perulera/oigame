@@ -26,11 +26,8 @@
     <% else %>
       <meta name="description" content="Plataforma de movilización ciudadana a través de la web - oiga.me" />
     <% end %>
-    <% if @keywords %>
-      <meta name="keywords" content="<%= @keywords %>" />
-    <% else %>
-      <meta name="keywords" content="oiga.me, plataforma, movilización, web, campaña, campañas" />
-    <% end %>
+    <meta name="keywords" content="oiga.me, plataforma, movilización, web, campaña, campañas" />
+    <meta property="fb:app_id" content="<%= APP_CONFIG[:facebook_app_id] %>"/>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
     <% if Rails.env == 'production' %>
@@ -128,12 +125,6 @@
                         <%= link_to user_omniauth_authorize_path(:facebook) do %>
                           <i class="glyphicon-facebook"></i>
                           Iniciar sesión con Facebook
-                        <% end %>
-                      </p>
-                      <p>
-                        <%= link_to user_omniauth_authorize_path(:twitter) do %>
-                          <i class="glyphicon-twitter"></i>
-                          Iniciar sesión con Twitter
                         <% end %>
                       </p>
                     </fieldset>

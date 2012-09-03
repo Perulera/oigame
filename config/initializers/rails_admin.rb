@@ -3,7 +3,6 @@
 
 RailsAdmin.config do |config|
 
-
  config.model User do
    update do
      configure :role do
@@ -13,6 +12,10 @@ RailsAdmin.config do |config|
  end
 
  config.attr_accessible_role { :admin }
+
+  config.authorize_with do |controller|
+    redirect_to main_app.root_path unless current_user.role == "admin"
+  end
 
   # https://github.com/sferik/rails_admin/wiki/CanCan
   # FIXME: da este error - 

@@ -1,7 +1,7 @@
 Oigame::Application.routes.draw do
 
   # solucionar el tema de acceso por rol
-  #mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
   resources :sub_oigames, :path => "o" do
     resources :campaigns do
@@ -24,8 +24,6 @@ Oigame::Application.routes.draw do
         post 'new_comment'
       end
       collection do
-        get 'tag'
-        get 'tags-archived' => 'campaigns#tags_archived', :as => 'tags_archived'
         get 'moderated'
         get 'feed', :defaults => { :format => 'rss' }
         get 'archived'
@@ -53,6 +51,11 @@ Oigame::Application.routes.draw do
     get '/users/auth/:provider' => 'users/omniauth_callbacks#passthru'
   end
 
+  # http://dev.af83.com/2012/06/04/request-authentication-from-the-router-with-devise.html
+  authenticate :user do
+    mount Tolk::Engine => '/translate', :as => 'tolk'
+  end
+
   resources :campaigns do
     member do
       post 'petition'
@@ -73,8 +76,6 @@ Oigame::Application.routes.draw do
       post 'new_comment'
     end
     collection do
-      get 'tag'
-      get 'tags-archived' => 'campaigns#tags_archived', :as => 'tags_archived'
       get 'moderated'
       get 'feed', :defaults => { :format => 'rss' }
       get 'archived'
