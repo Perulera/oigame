@@ -1,32 +1,6 @@
 <% @page_title = t(:home) %>
 
 <div id="subscribe-wrapper">
-
-  <div id="subscribe">
-    <div id="subscribe-img">
-      <%= image_tag("home-subscribe-3.jpg", :width => 462, :height => 359) %>
-    </div>
-    <div id="subscribe-form">
-      <p class="msg">Don't predict the future<br />
-      Achieve It!!</p>
-      <p class="user-count"><%= @users %> PERSONAS</p>
-      <p class="do-it">YA LO HAN HECHO</p>
-      <% if user_signed_in? %>
-        <br >
-        <br />
-        <%= link_to "Ver todas las campañas", campaigns_path, :class => "btn btn-primary btn-large" %>
-        <%= link_to t(:propose_campaign), new_campaign_path, :class => "btn btn-primary btn-large", :style => "margin-left:2em" %>
-      <% else %>
-        <br >
-        <br />
-        <form id="pre-signup" action="/users/signup" method="get">
-          <input type="email" name="email" placeholder="tunombre@dominio.com" required="true" />
-          <button id="button-home-signup" type="submit" class="btn-primary btn btn-large">Hazte miembro ahora</button>
-        </form>
-      <% end %>
-    </div>
-
-  </div>
   <div id="simple-slideshow-wrapper">
     <div id="simpleSlide-slideshow">
       <div class="left-button" rel="1"></div>
@@ -48,17 +22,101 @@
               <div> Somos el 99%, juntos cambiamos el mundo </div>
             </div>
             <div class="simpleSlide-slide" rel="1" alt="6">
-              <div> Lo consiguieron porque no sabían que era imposible </div>
+              <div> Don't predict the future Achieve It!! </div>
             </div>
-            <div class="simpleSlide-slide" rel="1" alt="7">
-              <div> Te queremos, ¡únete!  </div>
-            </div>
+          
         </div><!-- simpleSlide-tray -->
       </div><!-- simpleSlide-window -->
       <div class="right-button" rel="1"></div>
     </div> <!-- slideshow -->
     <div class="auto-slider" rel="1"></div>
   </div><!-- simple-slideshow-wrapper -->
+  <div id="subscribe">
+    <div id="subscribe-img">
+
+
+<div id="myCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                  <div class="item">
+                    
+                    
+                    <%= image_tag("destacadas/home-subscribe-3.jpg") %>
+                    <div class="carousel-caption">
+                      <h4>First Thumbnail label</h4>
+                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                       
+                       <div id="campaign-information">                       
+                        <div class="progress progress-striped progress-danger active ">
+                         <div class="bar" style="width: 60%;">||||||</div>
+                        </div>
+                      </div><!-- campaing-information -->
+                        <%= image_tag("cerdito.png") %>
+                        <%= image_tag("budget.png") %>
+                        <%= image_tag("agriculture.png") %>
+                          <button id="firma" class="btn btn-success grid_3 offset4 " >Firma</button>
+                
+                    </div>
+                  </div>
+                  <div class="item active">
+                    <%= image_tag("destacadas/99-DC.jpg") %>
+                    <div class="carousel-caption">
+                      <h4>Second Thumbnail label</h4>
+                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      <%= image_tag("hotmini.png") %>
+                       <button id="firma" class="btn btn-success offset3" >Firma esta campaña</button>
+                    </div>
+                  </div>
+                  <div class="item">
+                   <%= image_tag("destacadas/slide3.png") %>
+                    <div class="carousel-caption">
+                      <h4>Third Thumbnail label</h4>
+                      <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                       <%= image_tag("hotmini.png") %>
+                       <button id="firma" class="btn btn-success offset3" >Firma esta campaña</button>
+                    </div>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">‹</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">›</a>
+              </div>
+
+
+      
+    </div>
+    <div id="subscribe-form">
+      <h1 class="claim">Don't predict the future Achieve It!!</h1>
+        <h2>A Tansparent and Open Source platform to empower the people for building campaigns</h2>
+      <% if user_signed_in? %>
+        <br >
+        <br />
+        <%= link_to "Ver todas las campañas", campaigns_path, :class => "btn btn-primary btn-large" %>
+        <%= link_to t(:propose_campaign), new_campaign_path, :class => "btn btn-primary btn-large", :style => "margin-left:2em" %>
+      <% else %>
+        <br >
+        <br />
+        <form id="pre-signup" action="/users/signup" method="get">
+          <input type="email" name="email" placeholder="tunombre@dominio.com" required="true" />
+          <button id="button-home-signup" type="submit" class="btn-primary btn btn-large">Hazte miembro ahora</button>
+        </form>
+      <% end %>
+
+<div id="block-rhok-participation-rhok-participation" class="block block-rhok-participation">
+
+    
+  
+  <div class="content">
+    <div class="members"><span class="number"><%= @users %></span> <a href="/communidad">Miembros</a></div>
+<div class="problems"><span class="number">15</span> <a href="/problems">Paises</a></div>
+<div class="events"><span class="number">143</span> <a href="/events">Campañas</a></div>
+<div class="solutions"><span class="number">235.000</span> <a href="/solutions">Fimas</a></div>
+  </div>
+</div>
+
+
+    </div>
+
+  </div>
+
 </div><!-- subscribe-wrapper -->
 <div id="shadow"><%= link_to image_tag('shadow1.png'), "#" %></div>
 <div id="home-info-wrapper">
