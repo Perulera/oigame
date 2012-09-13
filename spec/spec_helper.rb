@@ -20,6 +20,9 @@ Spork.prefork do
   require 'database_cleaner'
   require 'factory_girl_rails'
 
+  # FactoryGirl.definition_file_paths << Rails.root.join('spec/factories')
+  # FactoryGirl.find_definitions
+
   Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
   RSpec.configure do |config|
@@ -50,6 +53,8 @@ Spork.prefork do
     #     --seed 1234
     config.order = "random"
 
+    config.include FactoryGirl::Syntax::Methods
+
     config.before :suite do
       DatabaseCleaner[:active_record].strategy = :truncation
     end
@@ -72,7 +77,7 @@ end
 
 Spork.each_run do
   # This code will be run each time you run your specs.
-
+  FactoryGirl.reload
 end
 
 # --- Instructions ---
