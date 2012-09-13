@@ -22,13 +22,25 @@ group :test, :development do
   gem 'capybara'
   # Pretty printed test output
   gem 'turn'
+  #TESTS
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-bundler'
+  gem 'factory_girl_rails'
+  gem 'spork'
+  gem 'guard-spork'
+  gem "libnotify"
+  gem 'database_cleaner'
+  gem 'rb-inotify'
 end
 
 group :development do
   gem 'pry-rails'
   # no me arranca el unicorn con ruby-debug19 (apardo)
   #gem 'ruby-debug19', :require => 'ruby-debug'
+
 end
+
 
 gem 'devise'
 gem 'exception_notification', :require => 'exception_notifier'
