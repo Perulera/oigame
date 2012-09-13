@@ -1,6 +1,7 @@
 before_script:
   - mysql -e 'create database oigame_test;'
   - "cp config/database.yml.example config/database.yml"
+  - "cp config/app_config.yml.example config/app_config.yml"
 rvm:
   - 1.9.2
   - 1.9.3
