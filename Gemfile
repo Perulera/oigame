@@ -21,7 +21,7 @@ group :test, :development do
   gem 'minitest'
   gem 'capybara'
   # Pretty printed test output
-  gem 'turn'
+  # gem 'turn'
   #TESTS
   gem 'rspec-rails'
   gem 'guard-rspec'
