@@ -37,17 +37,7 @@ y luego crea un archivo .rvmrc en la raiz del proyecto, que contenga: "rvm 1.9.2
 ```shell
 $ gem install bundler
 $ bundle # en la carpeta raíz del proyecto
-$ rake db:create
-$ rake db:migrate
-$ unicorn_rails
+$ bundle exec rake db:create
+$ bundle exec rake db:migrate
+$ bundle exec thin start
 ```
-
-Entrar en http://localhost:8080
-
-Para crear un usuario, entra en http://localhost:8080/users/signup, y tras crear el usuario,
-necesitas confirmarlo, de momento tendrás que comprobar el link que te aparece en log/development.log
-que será algo asi: 
-http://localhost:8080/users/confirmation?confirmation_token==3D92V4YYtKeEL5kZfQTGceQ
-
-(recuerda quitar =3D después de confirmation_token=)
-
