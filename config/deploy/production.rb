@@ -190,3 +190,6 @@ namespace :sphinx do
 end
 
 after 'deploy:finalize_update', 'sphinx:symlink_indexes'
+
+before 'deploy:finalize_update', 'deploy:assets:symlink'
+after 'deploy:update_code', 'deploy:assets:precompile'
