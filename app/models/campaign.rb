@@ -22,7 +22,7 @@ class Campaign < ActiveRecord::Base
   STATUS = %w[active archived deleted]
 
   validates :name, :uniqueness => { :scope => :sub_oigame_id }
-  validates :name, :image, :intro, :body, :ttype, :duedate_at, :presence => true
+  validates :user, :name, :image, :intro, :body, :ttype, :duedate_at, :presence => true
   # validación desactivada porque genera excepción al manipular objetos
   # antiguos que tienen una intro de mas de 500 caracteres
   #validates :intro, :length => { :maximum => 500 }
@@ -105,6 +105,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def participants
+    #This method is not being used, not tested!
     petitions = self.petitions
     mailings = self.messages
 
@@ -148,6 +149,7 @@ class Campaign < ActiveRecord::Base
       # facebook_it
     end
     Mailman.inform_campaign_activated(self).deliver
+    self
   end
 
   def deactivate!
@@ -156,7 +158,7 @@ class Campaign < ActiveRecord::Base
   end
 
   def moderated?
-    moderated == true ? true : false
+    self.moderated
   end
 
   def published?
