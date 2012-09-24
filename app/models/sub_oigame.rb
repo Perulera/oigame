@@ -35,16 +35,11 @@ class SubOigame < ActiveRecord::Base
   end
 
   def admin_users
-    data = []
-    users.each do |user|
-      data << user.email
-    end
-
-    return data.join("\r\n")
+    users.map { |u| u.email }.join("\r\n")
   end
 
   def admin_users=(args)
-    addresses = args.gsub(/\s+/, ',').split(',')
+    addresses = args.split(/\s+/)
     # arreglar el bug del strip
     # addresses.each {|address| address.strip!.downcase! }.uniq!
     addresses.each {|address| address.downcase! }.uniq!
