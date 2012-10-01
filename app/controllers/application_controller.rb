@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  
+  layout "responsive" 
   helper :all
   
   before_filter :set_locale
