@@ -18,7 +18,7 @@ class Ability
       can :read, Campaign, :status => 'archived'
       can :create, Campaign
       can :update, Campaign, :moderated => false, :user_id => user.id
-      can :participants, Campaign, :moderated => false, :user_id => user.id
+      #can :participants, Campaign, :moderated => false, :user_id => user.id
       can :widget, Campaign, :moderated => false 
       can :widget_iframe, Campaign, :moderated => false
       can :petition, Campaign, :moderated => false
@@ -49,10 +49,11 @@ class Ability
       can :manage, Campaign do |campaign|
         campaign.sub_oigame.nil?
       end
-      cannot :participants, Campaign
-      can :participants, Campaign do |campaign|
-        campaign.user == user
-      end
+      #cannot :participants, Campaign
+      #can :participants, Campaign do |campaign|
+      #  campaign.user == user
+      #end
+      can :participants, Campaign
       can :manage, Campaign do |campaign|
         unless campaign.sub_oigame.nil?
           campaign.sub_oigame.users.include? user
