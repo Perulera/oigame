@@ -81,6 +81,18 @@ class Campaign < ActiveRecord::Base
     end
   end
 
+  def as_json(options = {})
+    data = super
+
+    if self.messages.count > 0
+      data[:archieved] = self.messages.validated.count
+    else
+      data[:archieved] = self.petitions.validated.count
+    end
+
+    return data
+  end
+
   # Para repartir el envio de mensajes en varios enlaces
   def partition_of_emails(size = 60)
     data = []
