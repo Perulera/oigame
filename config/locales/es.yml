@@ -116,6 +116,7 @@ es:
   contact: 'Contacto'
   contact_to: 'ponte en contacto'
   descriptions: 'Descripción'
+  description: 'Descripción'
   stats: 'Estadísticas'
   spread: 'En tu web'
   spread_info: 'Si quieres difundir esta campaña en tu blog o sitio web, puedes hacerlo añadiendo el siguiente código HTML o Javascript. Eso hace posible que más gente pueda participar en la campaña.'
