@@ -32,7 +32,8 @@ class CampaignsController < ApplicationController
     @cause = true
     @campaign = Campaign.find(:all, :conditions => {:slug => params[:id], :sub_oigame_id => @sub_oigame}).first
 
-    @participants = @campaign.participants
+    # no se usan estos datos
+    #@participants = @campaign.participants
 
     @has_participated = @campaign.user_has_participated?(current_user)
 
