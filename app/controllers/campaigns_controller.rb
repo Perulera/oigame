@@ -30,6 +30,7 @@ class CampaignsController < ApplicationController
   def show
     # para que funcione el botón de facebook
     @cause = true
+    # TODO: esto puede devolver nil
     @campaign = Campaign.find(:all, :conditions => {:slug => params[:id], :sub_oigame_id => @sub_oigame}).first
 
     # no se usan estos datos
