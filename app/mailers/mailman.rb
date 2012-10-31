@@ -21,6 +21,11 @@ class Mailman < ActionMailer::Base
     mail :to => APP_CONFIG[:social_council_email], :subject => subject
   end
 
+  def send_mailing_to_participants_in_html(email, subject, message)
+    @msg_body = message
+    mail :to => email, :subject => "[oiga.me] #{subject}"
+  end
+
   def send_campaign_to_sub_oigame_admin(sub_oigame, campaign)
     @campaign = campaign
     @sub_oigame = sub_oigame
