@@ -17,6 +17,7 @@ namespace :oigame do
       messages = Message.where(:campaign_id => campaign_id, :validated => true).all
       messages.each do |m|
         emails << m.email
+      end
     end
 
     i = 1
