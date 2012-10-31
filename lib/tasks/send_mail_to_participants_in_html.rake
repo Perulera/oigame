@@ -1,6 +1,6 @@
 namespace :oigame do
   desc "Enviar mensaje a los participantes de una campana"
-  task(:mailing_for_participants => :environment) do
+  task(:mailing_for_participants_in_html => :environment) do
     message = File.open(ENV['FILENAME'], 'r').read
     subject = ENV['SUBJECT']
     campaign_id = ENV['CAMPAIGN_ID']
