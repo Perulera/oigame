@@ -35,12 +35,14 @@
         </div><!-- .grid_6 -->
         <div class="grid_5">
           <dl class="dl-horizontal">
-          <% if not @campaign.user.name.blank? %>
-            <dt>Creada por</dt>
-              <dd style="text-align:center">
-                <%= image_tag avatar_url(@campaign.user.email), :title => @campaign.user.name, :style => 'margin-bottom: 1px;' %>
-                <%= @campaign.user.name %>
-              </dd>
+          <% if @campaign.user.name %>
+            <% unless @campaign.user.name.blank? %>
+              <dt>Creada por</dt>
+                <dd style="text-align:center">
+                  <%= image_tag avatar_url(@campaign.user.email), :title => @campaign.user.name, :style => 'margin-bottom: 1px;' %>
+                  <%= @campaign.user.name %>
+                </dd>
+            <% end %>
           <% end %>
         </div><!-- .grid_5 -->
       </div><!-- .grid_12 -->
