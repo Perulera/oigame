@@ -258,7 +258,12 @@ class CampaignsController < ApplicationController
         if model.class.name == 'Message'
           Mailman.send_message_to_recipients(model).deliver
         end
-        redirect_to validated_campaign_url, :notice => 'Tu adhesión se ha ejecutado con éxito'
+        # Reenviar al sitio correcto, sub o principal
+        if @sub_oigame.nil?
+          redirect_to validated_campaign_url, :notice => 'Tu adhesión se ha ejecutado con éxito'
+        else
+          redirect_to validated_sub_oigame_campaign_url, :notice => 'Tu adhesión se ha ejecutado con éxito'
+        end
 
         return
       else
