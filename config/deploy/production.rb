@@ -10,8 +10,8 @@ set :rails_env,       "production"
 set :deploy_to,       "/var/www/oiga.me"
 set :normalize_asset_timestamps, false
 
-set :user,            "ruby-data"
-set :group,           "ruby-data"
+set :user,            "oigame"
+set :group,           "oigame"
 set :use_sudo,        false
 
 role :web,    "polar.oiga.me"
@@ -29,9 +29,9 @@ set(:previous_revision) { capture("cd #{current_path}; git rev-parse --short HEA
 default_environment["RAILS_ENV"] = 'production'
 
 # Use our ruby-1.9.3-p194@oigame
-default_environment["PATH"]         = "/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@oigame/bin:/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@global/bin:/home/ruby-data/.rvm/rubies/ruby-1.9.3-p362/bin:/home/ruby-data/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
-default_environment["GEM_HOME"]     = "/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@oigame"
-default_environment["GEM_PATH"]     = "/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@oigame:/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@global"
+default_environment["PATH"]         = "/home/oigame/.rvm/gems/ruby-1.9.3-p362@oigame/bin:/home/oigame/.rvm/gems/ruby-1.9.3-p362@global/bin:/home/oigame/.rvm/rubies/ruby-1.9.3-p362/bin:/home/oigame/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+default_environment["GEM_HOME"]     = "/home/oigame/.rvm/gems/ruby-1.9.3-p362@oigame"
+default_environment["GEM_PATH"]     = "/home/oigame/.rvm/gems/ruby-1.9.3-p362@oigame:/home/oigame/.rvm/gems/ruby-1.9.3-p362@global"
 default_environment["RUBY_VERSION"] = "ruby-1.9.3-p362"
 
 default_run_options[:shell] = 'bash'
