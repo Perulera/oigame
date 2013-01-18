@@ -14,9 +14,9 @@ set :user,            "ruby-data"
 set :group,           "ruby-data"
 set :use_sudo,        false
 
-role :web,    "beta.oiga.me"
-role :app,    "beta.oiga.me"
-role :db,     "beta.oiga.me", :primary => true
+role :web,    "polar.oiga.me"
+role :app,    "polar.oiga.me"
+role :db,     "polar.oiga.me", :primary => true
 
 set(:latest_release)  { fetch(:current_path) }
 set(:release_path)    { fetch(:current_path) }
@@ -29,13 +29,12 @@ set(:previous_revision) { capture("cd #{current_path}; git rev-parse --short HEA
 default_environment["RAILS_ENV"] = 'production'
 
 # Use our ruby-1.9.3-p194@oigame
-default_environment["PATH"]         = "/home/ruby-data/.rvm/gems/ruby-1.9.3-p194@oigame/bin:/home/ruby-data/.rvm/gems/ruby-1.9.3-p194@global/bin:/home/ruby-data/.rvm/rubies/ruby-1.9.3-p194/bin:/home/ruby-data/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
-default_environment["GEM_HOME"]     = "/home/ruby-data/.rvm/gems/ruby-1.9.3-p194@oigame"
-default_environment["GEM_PATH"]     = "/home/ruby-data/.rvm/gems/ruby-1.9.3-p194@oigame:/home/ruby-data/.rvm/gems/ruby-1.9.3-p194@global"
-default_environment["RUBY_VERSION"] = "ruby-1.9.3-p194"
+default_environment["PATH"]         = "/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@oigame/bin:/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@global/bin:/home/ruby-data/.rvm/rubies/ruby-1.9.3-p362/bin:/home/ruby-data/.rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"
+default_environment["GEM_HOME"]     = "/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@oigame"
+default_environment["GEM_PATH"]     = "/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@oigame:/home/ruby-data/.rvm/gems/ruby-1.9.3-p362@global"
+default_environment["RUBY_VERSION"] = "ruby-1.9.3-p362"
 
 default_run_options[:shell] = 'bash'
-default_run_options[:pty] = true
 
 namespace :deploy do
   desc "Deploy your application"
@@ -106,53 +105,23 @@ namespace :deploy do
     end
     
     # precompile assets
-    #run "cd #{latest_release}; RAILS_ENV=production bundle exec rake assets:precompile"
-  end
-  
-  namespace :assets do
-
-    task :precompile, :roles => :web do
-      from = source.next_revision(current_revision)
-      if capture("cd #{latest_release} && #{source.local.log(from)} vendor/assets/ lib/assets/ app/assets/ | wc -l").to_i > 0
-        run_locally("rake assets:clean && rake assets:precompile")
-        run_locally "cd public && tar -jcf assets.tar.bz2 assets"
-        top.upload "public/assets.tar.bz2", "#{shared_path}", :via => :scp
-        run "cd #{shared_path} && tar -jxf assets.tar.bz2 && rm assets.tar.bz2"
-        run_locally "rm public/assets.tar.bz2"
-        run_locally("rake assets:clean")
-      else
-        logger.info "Skipping asset precompilation because there were no asset changes"
-      end
-    end
-
-    task :symlink, roles: :web do
-      run ("rm -rf #{latest_release}/public/assets &&
-            mkdir -p #{latest_release}/public &&
-            mkdir -p #{shared_path}/assets &&
-            ln -s #{shared_path}/assets #{latest_release}/public/assets")
-    end
+    run "cd #{latest_release}; RAILS_ENV=production bundle exec rake assets:precompile"
   end
 
-  desc "Restart the Thin processes"
-  task :restart do
-    run <<-CMD
-      cd /var/www/oiga.me/current; bundle exec thin restart -C config/thin_production.yml
-    CMD
+  desc "Zero-downtime restart of Unicorn"
+  task :restart, :except => { :no_release => true } do
+    run "kill -s USR2 `cat /tmp/unicorn.oigame.pid`"
   end
 
-  desc "Start the Thin processes"
-  task :start do
-    run  <<-CMD
-      cd /var/www/oiga.me/current; bundle exec thin start -C config/thin_production.yml
-    CMD
+  desc "Start unicorn"
+  task :start, :except => { :no_release => true } do
+    run "cd #{current_path} ; bundle exec unicorn_rails -c config/unicorn.rb -D"
   end
-  
-  desc "Stop the Thin processes"
-  task :stop do
-    run <<-CMD
-      cd /var/www/oiga.me/current; bundle exec thin stop -C config/thin_production.yml
-    CMD
-  end
+
+  desc "Stop unicorn"
+  task :stop, :except => { :no_release => true } do
+    run "kill -s QUIT `cat /tmp/unicorn.oigame.pid`"
+  end  
 
   namespace :rollback do
     desc "Moves the repo back to the previous version of HEAD"
@@ -190,6 +159,3 @@ namespace :sphinx do
 end
 
 after 'deploy:finalize_update', 'sphinx:symlink_indexes'
-
-before 'deploy:finalize_update', 'deploy:assets:symlink'
-after 'deploy:update_code', 'deploy:assets:precompile'
